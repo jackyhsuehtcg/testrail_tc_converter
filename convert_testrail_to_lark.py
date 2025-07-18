@@ -47,6 +47,7 @@ class LarkTableURLParser:
         
         範例 URL:
         https://xxx.larksuite.com/base/Q4XxwaS2Cif80DkAku9lMKuAgof?table=tblkN8BxqYwxjc3S&view=vewJHSwJVd
+        https://xxx.larksuite.com/wiki/Q4XxwaS2Cif80DkAku9lMKuAgof?table=tblkN8BxqYwxjc3S&view=vewJHSwJVd
         
         返回:
         {
@@ -59,7 +60,7 @@ class LarkTableURLParser:
             
             # 從路徑中提取 wiki_token
             path_parts = parsed.path.strip('/').split('/')
-            if len(path_parts) >= 2 and path_parts[0] == 'base':
+            if len(path_parts) >= 2 and path_parts[0] in ['base', 'wiki']:
                 wiki_token = path_parts[1]
             else:
                 logger.error(f"無法從 URL 路徑中提取 wiki_token: {url}")
