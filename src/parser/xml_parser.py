@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 from typing import Optional, List
 import logging
 
-from ..models.testrail_models import TestSuite, Section, TestCase, Priority, CaseType
+from models.testrail_models import TestSuite, Section, TestCase, Priority, CaseType
 
 
 class TestRailXMLParser:

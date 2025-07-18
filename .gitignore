@@ -58,6 +58,10 @@ analysis/
 .env.production
 .env.development
 
+# Configuration files with sensitive information
+config.yaml
+config.yml
+
 # Node.js (if using for frontend)
 node_modules/
 npm-debug.log*

@@ -5,7 +5,7 @@ Lark 多維表格欄位對應配置
 import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Any
-from ..models.testrail_models import TestCase, Priority
+from .testrail_models import TestCase, Priority
 
 
 @dataclass
@@ -77,24 +77,43 @@ class LarkFieldProcessor:
         Pattern: {單號}-{第一層編號}-{第二層編號}
         範例: TCG-93178.010.010 Associated User -> TCG-93178.010.010
         範例: **TCG-93178.010.010 Associated User -> TCG-93178.010.010 (忽略前面的 *)
+        範例: TCG93178.010.010 Associated User -> TCG-93178.010.010 (自動加上 hyphen)
         """
         if not title:
             return ""
         
-        # 忽略前面的 * 符號，正則表達式匹配 Pattern
-        pattern = r'^\**([A-Z]+-\d+\.\d+\.\d+)'
-        match = re.match(pattern, title)
+        # 忽略前面的 * 符號，正則表達式匹配 Pattern (包含 hyphen)
+        pattern_with_hyphen = r'^\**([A-Z]+-\d+\.\d+\.\d+)'
+        match = re.match(pattern_with_hyphen, title)
         
         if match:
             return match.group(1)
         
+        # 匹配沒有 hyphen 的格式，並自動加上 hyphen
+        pattern_no_hyphen = r'^\**([A-Z]+)(\d+\.\d+\.\d+)'
+        match_no_hyphen = re.match(pattern_no_hyphen, title)
+        
+        if match_no_hyphen:
+            prefix = match_no_hyphen.group(1)
+            number_part = match_no_hyphen.group(2)
+            return f"{prefix}-{number_part}"
+        
         # 如果沒有匹配到完整格式，嘗試其他可能的格式
         # 例如：TCG-93178.010 或 **TCG-93178.010
-        pattern_alt = r'^\**([A-Z]+-\d+\.\d+)'
-        match_alt = re.match(pattern_alt, title)
+        pattern_alt_with_hyphen = r'^\**([A-Z]+-\d+\.\d+)'
+        match_alt = re.match(pattern_alt_with_hyphen, title)
         
         if match_alt:
             return match_alt.group(1)
+        
+        # 匹配沒有 hyphen 的簡化格式
+        pattern_alt_no_hyphen = r'^\**([A-Z]+)(\d+\.\d+)'
+        match_alt_no_hyphen = re.match(pattern_alt_no_hyphen, title)
+        
+        if match_alt_no_hyphen:
+            prefix = match_alt_no_hyphen.group(1)
+            number_part = match_alt_no_hyphen.group(2)
+            return f"{prefix}-{number_part}"
         
         return ""
     
@@ -103,16 +122,24 @@ class LarkFieldProcessor:
         從 title 中提取描述部分
         範例: TCG-93178.010.010 Associated User - Completely new user -> Associated User - Completely new user
         範例: **TCG-93178.010.010 Associated User - Completely new user -> Associated User - Completely new user (忽略前面的 *)
+        範例: TCG93178.010.010 Associated User - Completely new user -> Associated User - Completely new user (支援無 hyphen 格式)
         """
         if not title:
             return ""
         
-        # 移除前面的 * 符號和 Ticket Number 部分
-        pattern = r'^\**[A-Z]+-\d+(?:\.\d+)*\s*(.+)'
-        match = re.match(pattern, title)
+        # 移除前面的 * 符號和 Ticket Number 部分 (包含 hyphen)
+        pattern_with_hyphen = r'^\**[A-Z]+-\d+(?:\.\d+)*\s*(.+)'
+        match = re.match(pattern_with_hyphen, title)
         
         if match:
             return match.group(1).strip()
+        
+        # 移除前面的 * 符號和 Ticket Number 部分 (沒有 hyphen)
+        pattern_no_hyphen = r'^\**[A-Z]+\d+(?:\.\d+)*\s*(.+)'
+        match_no_hyphen = re.match(pattern_no_hyphen, title)
+        
+        if match_no_hyphen:
+            return match_no_hyphen.group(1).strip()
         
         # 如果沒有匹配到，返回原始 title
         return title
@@ -195,12 +222,12 @@ class LarkFieldProcessor:
             # 設置到 Lark 欄位
             lark_data[mapping.lark_field] = lark_value
         
-        # 設置固定的空欄位
-        lark_data["Acceptance Criteria"] = ""
-        lark_data["Attachment"] = ""
-        lark_data["Assignee"] = ""
-        lark_data["Test Result"] = ""
-        lark_data["TCG"] = ""
+        # 設置固定的空欄位 - 不傳送特殊類型欄位
+        # lark_data["Acceptance Criteria"] = ""  # 雙向連結欄位不傳送
+        # lark_data["Attachment"] = ""           # 附件欄位不傳送
+        # lark_data["Assignee"] = ""             # 人員欄位不傳送
+        # lark_data["Test Result"] = ""          # 選擇欄位不傳送
+        # lark_data["TCG"] = ""                  # 雙向連結欄位不傳送
         
         return lark_data
     
@@ -222,11 +249,11 @@ class LarkFieldProcessor:
         return field_names
     
     def validate_ticket_number(self, ticket_number: str) -> bool:
-        """驗證 Ticket Number 格式"""
+        """驗證 Ticket Number 格式 (必須包含 hyphen)"""
         if not ticket_number:
             return False
         
-        # 檢查是否符合 {單號}-{第一層編號}-{第二層編號} 格式
+        # 檢查是否符合 {單號}-{第一層編號}-{第二層編號} 格式 (必須包含 hyphen)
         pattern = r'^[A-Z]+-\d+\.\d+\.\d+$'
         return bool(re.match(pattern, ticket_number))
     
