@@ -98,10 +98,11 @@ class TestRailXMLParser:
 class TestCaseDataCleaner:
     """測試案例資料清理器"""
     
-    def clean_test_case_number(self, title: str) -> Tuple[str, str]
+    def extract_test_case_number_and_title(self, title: str) -> Tuple[str, str]
     def fix_missing_hyphen(self, case_number: str) -> str
     def clean_markdown_content(self, content: str) -> str
     def extract_url_description(self, url_content: str) -> str
+    def clean_test_case_fields(self, test_case: Dict[str, Any]) -> Dict[str, Any]
 ```
 
 #### 3.2.3 Lark 客戶端 (client.py)
@@ -121,7 +122,8 @@ class LarkDataFormatter:
     """Lark 資料格式轉換器"""
     
     def format_test_case_for_lark(self, test_case: Dict) -> Dict
-    def validate_lark_fields(self, field_data: Dict) -> bool
+    def format_priority_field(self, priority: str) -> str
+    def validate_required_fields(self, test_case: Dict) -> bool
     def batch_format_records(self, test_cases: List[Dict]) -> List[Dict]
 ```
 
@@ -184,13 +186,23 @@ lark:
   rate_limit:
     max_requests_per_minute: 60
     batch_size: 500
+  field_mapping:
+    test_case_number: "test_case_number"
+    title: "title"
+    priority: "priority"  # 單選欄位
+    precondition: "precondition"  # 文字欄位
+    steps: "steps"  # 文字欄位
+    expected_result: "expected_result"  # 文字欄位
 
 # 資料處理設定
 processing:
   test_case_number_pattern: "TCG-\\d+\\.\\d+\\.\\d+"
   required_fields:
     - title
-    - case_number
+    - priority
+    - precondition
+    - steps
+    - expected_result
   
 # 日誌設定
 logging:

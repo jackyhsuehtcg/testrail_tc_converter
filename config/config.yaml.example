@@ -8,16 +8,33 @@ lark:
   api:
     timeout: 30
     retry_count: 3
+  field_mapping:
+    # Lark 多維表格欄位對應
+    test_case_number: "test_case_number"  # 文字欄位
+    title: "title"  # 文字欄位
+    priority: "priority"  # 單選欄位
+    precondition: "precondition"  # 文字欄位
+    steps: "steps"  # 文字欄位
+    expected_result: "expected_result"  # 文字欄位
 
 # 資料處理設定
 processing:
   test_case_number_pattern: "TCG-\\d+\\.\\d+\\.\\d+"
   required_fields:
     - title
-    - case_number
+    - priority
+    - precondition
+    - steps
+    - expected_result
   batch_processing:
     max_records_per_batch: 500
     memory_limit_mb: 200
+  field_mapping:
+    # XML 到內部格式的欄位對應
+    xml_priority: "priority"
+    xml_preconds: "precondition"
+    xml_steps: "steps"
+    xml_expected: "expected_result"
 
 # 檔案處理設定
 files:

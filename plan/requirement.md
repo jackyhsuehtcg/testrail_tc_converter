@@ -19,11 +19,19 @@
 
 ### 2.2 資料欄位提取與處理
 
-#### 2.2.1 主要欄位
+#### 2.2.1 必要欄位（僅提取以下 5 個欄位）
 - **Title 欄位**：包含 Test Case Number 和 Title 內容
-- **Test Case Number 格式**：TCG-XXX.YYY.ZZZ（XXX、YYY、ZZZ 為數字組合）
+- **Priority 欄位**：測試案例優先級
+- **Precondition 欄位**：測試前置條件
+- **Steps 欄位**：測試執行步驟
+- **Expected Result 欄位**：預期測試結果
 
-#### 2.2.2 資料清理規則
+#### 2.2.2 Test Case Number 處理
+- **格式規範**：TCG-XXX.YYY.ZZZ（XXX、YYY、ZZZ 為數字組合）
+- **提取規則**：從 Title 欄位中提取 Test Case Number
+- **Title 處理**：提取 Test Case Number 後，剩餘部分作為實際 Title
+
+#### 2.2.3 資料清理規則
 - **缺失 Hyphen 處理**：檢測並補正 TCG 與 XXX 之間缺失的 hyphen
 - **Hyphen 標準化**：確保輸出的 Test Case Number 格式為 TCG-XXX.YYY.ZZZ
 - **Markdown 清理**：移除 markdown 格式標記
@@ -36,7 +44,15 @@
 - 僅實作資料寫入功能，移除其他附加功能
 - 遵循 Lark API Rate Limit 限制
 
-#### 2.3.2 批次處理
+#### 2.3.2 欄位對應規則
+- **Test Case Number**：從 Title 中提取的測試案例編號
+- **Title**：提取 Test Case Number 後的剩餘標題內容
+- **Priority**：優先級（單選欄位類型）
+- **Precondition**：前置條件（文字欄位類型）
+- **Steps**：測試步驟（文字欄位類型）
+- **Expected Result**：預期結果（文字欄位類型）
+
+#### 2.3.3 批次處理
 - **批次大小限制**：單次更新最多 500 筆資料
 - **批次處理**：自動分割大量資料為多個批次進行處理
 
@@ -99,9 +115,10 @@
 
 ### 6.1 功能驗收
 - [ ] 成功讀取 TestRail XML 檔案
-- [ ] 正確提取和清理 Test Case Number 格式
+- [ ] 正確提取 5 個必要欄位（Title, Priority, Precondition, Steps, Expected Result）
+- [ ] 正確從 Title 中提取 Test Case Number 並清理格式
 - [ ] 正確處理 markdown 和 URL 格式
-- [ ] 成功批次寫入 Lark 多維表格
+- [ ] 成功批次寫入 Lark 多維表格，遵循欄位類型要求
 - [ ] CLI 介面操作順暢
 
 ### 6.2 品質驗收
