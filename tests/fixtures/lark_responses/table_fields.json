@@ -1,0 +1,63 @@
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "items": [
+            {
+                "field_id": "fldXXXXXXXX1",
+                "field_name": "test_case_number",
+                "type": 1,
+                "description": "測試案例編號"
+            },
+            {
+                "field_id": "fldXXXXXXXX2",
+                "field_name": "title",
+                "type": 1,
+                "description": "測試案例標題"
+            },
+            {
+                "field_id": "fldXXXXXXXX3",
+                "field_name": "priority",
+                "type": 3,
+                "description": "優先級",
+                "property": {
+                    "options": [
+                        {
+                            "id": "optXXXXXXXX1",
+                            "name": "High",
+                            "color": 1
+                        },
+                        {
+                            "id": "optXXXXXXXX2", 
+                            "name": "Medium",
+                            "color": 2
+                        },
+                        {
+                            "id": "optXXXXXXXX3",
+                            "name": "Low", 
+                            "color": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "field_id": "fldXXXXXXXX4",
+                "field_name": "precondition",
+                "type": 1,
+                "description": "前置條件"
+            },
+            {
+                "field_id": "fldXXXXXXXX5",
+                "field_name": "steps",
+                "type": 1,
+                "description": "測試步驟"
+            },
+            {
+                "field_id": "fldXXXXXXXX6",
+                "field_name": "expected_result",
+                "type": 1,
+                "description": "預期結果"
+            }
+        ]
+    }
+}

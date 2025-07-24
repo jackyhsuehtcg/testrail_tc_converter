@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+    <id>S000</id>
+    <name>空測試套件</name>
+    <description>沒有測試案例的空套件</description>
+    <sections>
+    </sections>
+</suite>

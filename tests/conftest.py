@@ -14,6 +14,9 @@ project_root = Path(__file__).parent.parent
 src_path = project_root / "src"
 sys.path.insert(0, str(src_path))
 
+# 匯入測試輔助工具
+from tests.test_helpers import xml_helper, lark_helper, file_helper, data_helper
+
 
 @pytest.fixture
 def project_root_path():
@@ -68,18 +71,35 @@ def sample_xml_content():
 @pytest.fixture
 def sample_lark_response():
     """提供範例 Lark API 回應"""
-    return {
-        "code": 0,
-        "msg": "success",
-        "data": {
-            "records": [
-                {
-                    "record_id": "test_record_1",
-                    "fields": {
-                        "title": "測試案例標題",
-                        "case_number": "TCG-001.001.001"
-                    }
-                }
-            ]
-        }
-    }
+    return lark_helper.load_lark_response("batch_create_success.json")
+
+
+@pytest.fixture
+def xml_test_helper():
+    """提供 XML 測試輔助工具"""
+    return xml_helper
+
+
+@pytest.fixture
+def lark_test_helper():
+    """提供 Lark 測試輔助工具"""
+    return lark_helper
+
+
+@pytest.fixture
+def file_test_helper():
+    """提供檔案測試輔助工具"""
+    return file_helper
+
+
+@pytest.fixture
+def data_test_helper():
+    """提供資料測試輔助工具"""
+    return data_helper
+
+
+@pytest.fixture(autouse=True, scope="function")
+def cleanup_temp_files_after_test():
+    """測試完成後自動清理臨時檔案"""
+    yield
+    file_helper.cleanup_temp_files()

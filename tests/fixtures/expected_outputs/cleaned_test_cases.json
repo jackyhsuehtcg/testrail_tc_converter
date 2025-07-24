@@ -1,0 +1,34 @@
+[
+    {
+        "test_case_number": "TCG-001.001.001",
+        "title": "基本登入功能測試",
+        "priority": "High",
+        "precondition": "測試前需確保系統正常運行",
+        "steps": "1. 開啟登入頁面\n2. 輸入有效的使用者名稱和密碼\n3. 點擊登入按鈕",
+        "expected_result": "成功登入並跳轉到主頁"
+    },
+    {
+        "test_case_number": "TCG-001.002.001",
+        "title": "密碼重設功能測試",
+        "priority": "Medium", 
+        "precondition": "使用者需要已註冊但忘記密碼",
+        "steps": "1. 點擊「忘記密碼」連結\n2. 輸入註冊的電子郵件地址\n3. 點擊「發送重設郵件」按鈕",
+        "expected_result": "收到密碼重設郵件，可成功重設密碼"
+    },
+    {
+        "test_case_number": "TCG-888.001.001",
+        "title": "缺少 Hyphen 的案例編號",
+        "priority": "High",
+        "precondition": "測試案例編號格式修正",
+        "steps": "1. 檢查案例編號\n2. 驗證格式是否正確",
+        "expected_result": "案例編號被修正為 TCG-888.001.001"
+    },
+    {
+        "test_case_number": "TCG-888.002.001",
+        "title": "包含 Markdown 格式的測試案例",
+        "priority": "Medium",
+        "precondition": "測試內容包含 粗體 和 連結",
+        "steps": "1. 檢查 斜體 內容\n2. 驗證 程式碼 格式\n3. 測試 Google 連結處理",
+        "expected_result": "Markdown 格式被正確清理，連結只保留描述文字"
+    }
+]

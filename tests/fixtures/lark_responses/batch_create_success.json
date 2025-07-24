@@ -1,0 +1,30 @@
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "records": [
+            {
+                "record_id": "recXXXXXXXX1",
+                "fields": {
+                    "test_case_number": "TCG-001.001.001",
+                    "title": "基本登入功能測試",
+                    "priority": "High",
+                    "precondition": "測試前需確保系統正常運行",
+                    "steps": "1. 開啟登入頁面\n2. 輸入有效的使用者名稱和密碼\n3. 點擊登入按鈕",
+                    "expected_result": "成功登入並跳轉到主頁"
+                }
+            },
+            {
+                "record_id": "recXXXXXXXX2", 
+                "fields": {
+                    "test_case_number": "TCG-001.002.001",
+                    "title": "密碼重設功能測試",
+                    "priority": "Medium",
+                    "precondition": "使用者需要已註冊但忘記密碼",
+                    "steps": "1. 點擊「忘記密碼」連結\n2. 輸入註冊的電子郵件地址\n3. 點擊「發送重設郵件」按鈕",
+                    "expected_result": "收到密碼重設郵件，可成功重設密碼"
+                }
+            }
+        ]
+    }
+}

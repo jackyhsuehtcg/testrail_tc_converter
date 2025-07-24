@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S360</id>
+	<name>TP-3153 Associated Users Phase 2</name>
+	<description></description>
+	<sections>
+		<section>
+		<name>TP-3153</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-93178: 風險管理員 使用更新為具有附加列和排序功能的新設定表格 UI 來查看關聯玩家</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-93178.010 關聯玩家 - UI 調整</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C29986</id>
+				<title>TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>開始測試前需開啟新版 UI：
+1. 登入至 **TAC**
+2. 打開 **系統配置** -&gt; **系統用戶權限** -&gt; **權限樹** -&gt; **玩家管理** -&gt; **玩家用戶詳情 - 20106** -&gt; **關聯玩家 20115**
+3. 啟動 **UI版本** -&gt; **New 關聯玩家**
+4. 點擊 **提交** 儲存設定，重新登入
+
+SIT Test site（帳號請洽各管理員）:
+http://sit-admin2.tcg.com/ 
+</preconds>
+											<steps>1. 以風控人員身份登入 **TAC**
+2. 至 **玩家管理** -&gt; **玩家用戶管理** -&gt; **用戶搜索**
+3. 輸入 **jacktest001**
+4. 選擇品牌 **tcgdemov3**
+5. 點擊 **搜尋**
+6. 在搜尋結果點擊 **jacktest001** 開啟玩家頁面
+7. 切換到 **關聯玩家** 分頁</steps>
+											<expected>關聯玩家詳情需包含以下欄位，且必須按照以下順序：
+
+1. 列數
+2. 關聯帳號
+3. 帳號狀態
+4. 上級代理
+5. 註冊日期
+6. 上次登入
+7. 餘額
+8. 首存時間
+9. 首存金額
+10. 總紅利
+11. 總充值（次）
+12. 總提現（次）
+13. 總投注／總中獎
+14. 總有效投注
+15. 總盈虧
+16. 營運標籤
+17. 關聯項目
+18. 關聯度
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30018</id>
+				<title>TCG-93178.010.015 關聯玩家 - UI 調整 - 可排序欄位</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) 
+</preconds>
+											<steps>1. 觀察關聯玩家頁面之欄位標題列 
+</steps>
+											<expected>可排序欄位為以下，並且需要在標題列顯示排序指示符號
+1. 註冊日期
+2. 上次登入
+3. 首存時間
+4. 首存金額
+5. 總紅利
+6. 總充值（次）
+7. 總提現（次）
+8.總有效投注
+9. 總盈虧
+10. 關聯項目
+11. 關聯度 
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30107</id>
+				<title>TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯度** 選擇 **全部**
+2. 點擊 **查詢**</steps>
+											<expected>1. 預設排序欄位需為關聯度
+2. 預設排序必須為遞減排序（由高至低）
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30129</id>
+				<title>TCG-93178.020.030 關聯玩家- UI 調整 - 分頁指示</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊搜尋結果下方之分頁按鈕
+
+</steps>
+											<expected>1. 頁面應正確切換至相對應的紀錄
+2. 預設應繼續使用關聯度遞減排序 
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30260</id>
+				<title>TCG-93178.020.040 關聯玩家- UI 調整 - 固定顯示欄位</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>左右拖動結果顯示欄位
+ 
+</steps>
+											<expected>以下四個欄位需保持固定不被捲動
+1. 列數
+2. 關聯帳號
+3. 關聯項目
+4. 關聯度 
+</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>TCG-93178.020 關聯玩家 - 搜尋結果顯示格式</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30108</id>
+				<title>TCG-93178.020.010 關聯玩家 - 搜尋結果顯示格式 - 列數</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察列數欄呈現形式 
+</steps>
+											<expected>1. 欄位標題空白，不需包含任何符號
+2. 數列恆常保持遞增（如 1, 2, 3, 4...），不跟著排序變動
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30111</id>
+				<title>TCG-93178.020.020 關聯玩家 - 搜尋結果顯示格式 - 關聯玩家</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察關聯玩家欄呈現形式</steps>
+											<expected>1. 以超連結形式呈現關聯玩家帳號
+2. 點擊後，會前往該玩家用戶頁面</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30112</id>
+				<title>TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 開啟另一個瀏覽器分頁，以相同帳號登入，至 **玩家用戶管理** -&gt; **高級搜索**
+2. 品牌選擇 **tcgdemov3**
+3. 選擇註冊時間 **2025-03-15 00:00:00** 至 **2025-03-15 23:59:59**
+4. 由結果列獲取 jacktest002 的帳號狀態
+5. 回到關聯玩家頁面，比對 jacktest002 玩家狀態</steps>
+											<expected>關聯玩家顯示之帳號狀態應該與高級搜索頁面上的狀態必須為一致
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30113</id>
+				<title>TCG-93178.020.040 關聯玩家 - 搜尋結果顯示格式 - 上級代理</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟
+</preconds>
+											<steps>1. 觀察 **上級代理** 欄位之格式及資料正確性</steps>
+											<expected>**上級代理** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30114</id>
+				<title>TCG-93178.020.050 關聯玩家 - 搜尋結果顯示格式 - 註冊日期</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察註冊日期欄位之格式及資料正確性</steps>
+											<expected>1. 需與高級搜索頁面之資料保持一致
+2. 格式：已存在的註冊時間 + 已存在的註冊IP，e.g. 
+
+關聯玩家頁面-註冊日期僅需時間即可,不需要ip
+
+2025-03-11 11:29:51
+IP:172.18.200.179
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30115</id>
+				<title>TCG-93178.020.060 關聯玩家 - 搜尋結果顯示格式 - 上次登入</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **上次登入** 欄位之格式及資料正確性
+</steps>
+											<expected>**上次登入** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30116</id>
+				<title>TCG-93178.020.070 關聯玩家 - 搜尋結果顯示格式 - 餘額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **餘額** 欄位之格式及資料正確性</steps>
+											<expected>1. **餘額** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30117</id>
+				<title>TCG-93178.020.080 關聯玩家 - 搜尋結果顯示格式 - 首存時間</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **首存時間** 欄位之格式及資料正確性</steps>
+											<expected>**首存時間** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30118</id>
+				<title>TCG-93178.020.090 關聯玩家 - 搜尋結果顯示格式 - 首存金額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **首存金額** 欄位之格式及資料正確性</steps>
+											<expected>1. **首存金額** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30119</id>
+				<title>TCG-93178.020.100 關聯玩家 - 搜尋結果顯示格式 - 總紅利</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟 
+</preconds>
+											<steps>1. 觀察 **總紅利** 欄位之格式及資料正確性</steps>
+											<expected>1. **總紅利** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30120</id>
+				<title>TCG-93178.020.110 關聯玩家 - 搜尋結果顯示格式 - 總充值（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **總充值（次）** 欄位之格式及資料正確性</steps>
+											<expected>1. **總充值（次）** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **{總充值}（千分位分隔符+兩位小數）{次}** ，例如
+
+325,996
+1,610
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30121</id>
+				<title>TCG-93178.020.120 關聯玩家 - 搜尋結果顯示格式 - 總提現（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **上級代理** 欄位之格式及資料正確性</steps>
+											<expected>1. **總提現（次）** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **{總提現}（千分位分隔符+兩位小數）{次}** ，例如
+
+325,996
+1,610</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30122</id>
+				<title>TCG-93178.020.130 關聯玩家 - 搜尋結果顯示格式 - 總投注／總中獎</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **總投注／總中獎** 欄位之格式及資料正確性</steps>
+											<expected>1. **總投注／總中獎** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30123</id>
+				<title>TCG-93178.020.140 關聯玩家 - 搜尋結果顯示格式 - 總有效投注</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **總有效投注** 欄位之格式及資料正確性</steps>
+											<expected>1. **總有效投注** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67
+3. 負數：紅色；正數：綠色</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30124</id>
+				<title>TCG-93178.020.150 關聯玩家 - 搜尋結果顯示格式 - 總盈虧</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **總盈虧** 欄位之格式及資料正確性</steps>
+											<expected>1. **總盈虧** 顯示之狀態應該與高級搜索頁面上的狀態必須為一致
+2. 格式應為 **千分位分隔符+兩位小數** ，例如 12,345.67
+3. 負數：紅色；正數：綠色</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30125</id>
+				<title>TCG-93178.020.160 關聯玩家 - 搜尋結果顯示格式 - 營運標籤</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 開啟另一個瀏覽器分頁，以相同帳號登入，至 **玩家用戶管理** -&gt; **用戶搜索**
+2. 品牌選擇 **tcgdemov3**
+3. 輸入 jacktest002
+4. 開啟 jacktest002 的詳細資料頁面
+5. 回到關聯玩家頁面，比對玩家狀態</steps>
+											<expected>營運標籤狀態應與玩家詳細資料頁面一致
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30126</id>
+				<title>TCG-93178.020.170 關聯玩家 - 搜尋結果顯示格式 - 關聯項目</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察 **關聯項目** 欄位之格式及資料正確性</steps>
+											<expected>應顯示關聯度相關項目條列
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30127</id>
+				<title>TCG-93178.020.180 關聯玩家 - 搜尋結果顯示格式 - 關聯度</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112)之預備步驟</preconds>
+											<steps>1. 觀察 **關聯度** 欄位之格式及資料正確性</steps>
+											<expected>關聯度分數顯示原則如下： 
+
+關聯度 &gt; 100, 紅色背景
+關聯度 = 50 - 100, 黃色背景
+關聯度 &lt; 100, 綠色背景</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>TCG-93178.030 關聯玩家 - 欄位排序</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30128</id>
+				<title>TCG-93178.030.010 關聯玩家 - 欄位排序 - 列數</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)
+</preconds>
+											<steps>1. 按下 **註冊日期** 欄位排序
+
+2. 觀察列數欄位排列 
+</steps>
+											<expected>1. 列數欄位永遠為從 1 開始遞增
+2. 其他欄位排序後不會改變順序，依舊是從 1 開始遞增
+ 
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30130</id>
+				<title>TCG-93178.030.020 關聯玩家 - 欄位排序 - 關聯帳號</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察 **關聯帳號** 欄位排列</steps>
+											<expected>1. **關聯帳號** 欄位應無任何排列方式可用
+2. 無排列指示器顯示在欄位標題</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30131</id>
+				<title>TCG-93178.030.030 關聯玩家 - 欄位排序 - 帳號狀態</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察 **帳號狀態** 欄位排列</steps>
+											<expected>1. **帳號狀態** 欄位應無任何排列方式可用
+2. 無排列指示器顯示在欄位標題</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30132</id>
+				<title>TCG-93178.030.040 關聯玩家 - 欄位排序 - 上級代理</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察 **上級代理** 欄位排列</steps>
+											<expected>1. **上級代理** 欄位應無任何排列方式可用
+2. 無排列指示器顯示在欄位標題</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30133</id>
+				<title>TCG-93178.030.050 關聯玩家 - 欄位排序 - 註冊日期</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **註冊日期** 欄位標題列
+2. 觀察 **註冊日期** 結果排序
+</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 日期排列應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30134</id>
+				<title>TCG-93178.030.060 關聯玩家 - 欄位排序 - 上次登入</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **上次登入** 欄位標題列
+2. 觀察 **上次登入** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 日期排列應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30135</id>
+				<title>TCG-93178.030.070 關聯玩家 - 欄位排序 - 餘額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **餘額** 欄位標題列
+2. 觀察 **餘額** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30136</id>
+				<title>TCG-93178.030.080 關聯玩家 - 欄位排序 - 首存時間</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **首存時間** 欄位標題列
+2. 觀察 **首存時間** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 日期排列應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30137</id>
+				<title>TCG-93178.030.090 關聯玩家 - 欄位排序 - 首存金額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **首存金額** 欄位標題列
+2. 觀察 **首存金額** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30138</id>
+				<title>TCG-93178.030.100 關聯玩家 - 欄位排序 - 總紅利</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **總紅利** 欄位標題列
+2. 觀察 **總紅利** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30139</id>
+				<title>TCG-93178.030.110 關聯玩家 - 欄位排序 - 總充值（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **總充值（次）** 欄位標題列
+2. 觀察 **總充值（次）** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30140</id>
+				<title>TCG-93178.030.120 關聯玩家 - 欄位排序 - 總提現（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **總提現（次）** 欄位標題列
+2. 觀察 **總提現（次）** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30141</id>
+				<title>TCG-93178.030.130 關聯玩家 - 欄位排序 - 總投注／總中獎</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107) </preconds>
+											<steps>1. 觀察 **總投注／總中獎** 欄位排列</steps>
+											<expected>1. **總投注／總中獎** 欄位應無任何排列方式可用
+2. 無排列指示器顯示在欄位標題</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30142</id>
+				<title>TCG-93178.030.140 關聯玩家 - 欄位排序 - 總有效投注</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **總有效投注** 欄位標題列
+2. 觀察 **總有效投注** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30143</id>
+				<title>TCG-93178.030.150 關聯玩家 - 欄位排序 - 總盈虧</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **總盈虧** 欄位標題列
+2. 觀察 **總盈虧** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 金額數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30144</id>
+				<title>TCG-93178.030.160 關聯玩家 - 欄位排序 - 營運標籤</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 觀察 **營運標籤** 欄位排列</steps>
+											<expected>1. **營運標籤** 欄位應無任何排列方式可用
+2. 無排列指示器顯示在欄位標題</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30145</id>
+				<title>TCG-93178.030.170 關聯玩家 - 欄位排序 - 關聯項目</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **關聯項目** 欄位標題列
+2. 觀察 **關聯項目** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 關聯項目數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30146</id>
+				<title>TCG-93178.030.180 關聯玩家 - 欄位排序 - 關聯度</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 點擊 **關聯度** 欄位標題列
+2. 觀察 **關聯度** 結果排序</steps>
+											<expected>1. 排列順序隨點擊應由遞增 -&gt; 遞減 -&gt; 預設無排列
+2. 關聯度數字應按照遞增 -&gt; 遞減 -&gt; 預設無排列做同步切換</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>TCG-93178.040 關聯玩家 - 搜尋結果動態格式響應</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30147</id>
+				<title>TCG-93178.040.010 關聯玩家 - 動態格式響應 - 列數</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **列數** 欄位呈現狀態</steps>
+											<expected>**列數** 欄位應為固定欄位，不可滾動 
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30148</id>
+				<title>TCG-93178.040.020 關聯玩家 - 動態格式響應 - 關聯帳號</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **關聯帳號** 欄位呈現狀態</steps>
+											<expected>**關聯帳號** 欄位應為固定欄位，不可滾動 </expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30149</id>
+				<title>TCG-93178.040.030 關聯玩家 - 動態格式響應 - 帳號狀態</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **關聯帳號** 欄位呈現狀態</steps>
+											<expected>1. **關聯帳號** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30150</id>
+				<title>TCG-93178.040.040 關聯玩家 - 動態格式響應 - 上級代理</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **上級代理** 欄位呈現狀態</steps>
+											<expected>1. **上級代理** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30151</id>
+				<title>TCG-93178.040.050 關聯玩家 - 動態格式響應 - 註冊日期</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **註冊日期** 欄位呈現狀態</steps>
+											<expected>1. **註冊日期** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30152</id>
+				<title>TCG-93178.040.060 關聯玩家 - 動態格式響應 - 上次登入</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **上次登入** 欄位呈現狀態</steps>
+											<expected>1. **上次登入** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30153</id>
+				<title>TCG-93178.040.070 關聯玩家 - 動態格式響應 - 餘額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **餘額** 欄位呈現狀態</steps>
+											<expected>1. **餘額** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30154</id>
+				<title>TCG-93178.040.080 關聯玩家 - 動態格式響應 - 首存時間</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.020.030 關聯玩家 - 搜尋結果顯示格式 - 帳號狀態](https://tcgroup.testrail.io/index.php?/cases/view/30112) </preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **首存時間** 欄位呈現狀態</steps>
+											<expected>1. **首存時間** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30155</id>
+				<title>TCG-93178.040.090 關聯玩家 - 動態格式響應 - 首存金額</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **首存金額** 欄位呈現狀態</steps>
+											<expected>1. **首存金額** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30156</id>
+				<title>TCG-93178.040.100 關聯玩家 - 動態格式響應 - 總紅利</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總紅利** 欄位呈現狀態</steps>
+											<expected>1. **總紅利** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30158</id>
+				<title>TCG-93178.040.120 關聯玩家 - 動態格式響應 - 總充值（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總充值（次）** 欄位呈現狀態</steps>
+											<expected>1. **總充值（次）** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30159</id>
+				<title>TCG-93178.040.130 關聯玩家 - 動態格式響應 - 總提現（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總提現（次）** 欄位呈現狀態</steps>
+											<expected>1. **總提現（次）** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30160</id>
+				<title>TCG-93178.040.110 關聯玩家 - 動態格式響應 - 總充值（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總充值（次）** 欄位呈現狀態</steps>
+											<expected>1. **總充值（次）** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30161</id>
+				<title>TCG-93178.040.120 關聯玩家 - 動態格式響應 - 總提現（次）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總提現（次）** 欄位呈現狀態</steps>
+											<expected>1. **總提現（次）** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30162</id>
+				<title>TCG-93178.040.130 關聯玩家 - 動態格式響應 - 總投注／總中獎</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總投注／總中獎** 欄位呈現狀態</steps>
+											<expected>1. **總投注／總中獎** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30163</id>
+				<title>TCG-93178.040.140 關聯玩家 - 動態格式響應 - 總有效投注</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總有效投注** 欄位呈現狀態</steps>
+											<expected>1. **總有效投注** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30164</id>
+				<title>TCG-93178.040.150 關聯玩家 - 動態格式響應 - 總盈虧</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **總盈虧** 欄位呈現狀態</steps>
+											<expected>1. **總盈虧** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30165</id>
+				<title>TCG-93178.040.160 關聯玩家 - 動態格式響應 - 營運標籤</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **營運標籤** 欄位呈現狀態</steps>
+											<expected>1. **營運標籤** 欄位應為可滾動欄位
+2. 左右拉動後還是可以看到完整的欄位內資訊</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30166</id>
+				<title>TCG-93178.040.170 關聯玩家 - 動態格式響應 - 關聯項目</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **關聯項目** 欄位呈現狀態</steps>
+											<expected>**關聯項目** 欄位應為固定欄位，不可滾動 </expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30167</id>
+				<title>TCG-93178.040.180 關聯玩家 - 動態格式響應 - 關聯度</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.020 關聯玩家 - UI 調整 - 搜尋結果預設排序](https://tcgroup.testrail.io/index.php?/cases/view/30107)</preconds>
+											<steps>1. 拉動瀏覽器視窗調整寬度至極小
+2. 左右捲動滾動列，觀察 **關聯度** 欄位呈現狀態</steps>
+											<expected>**關聯度** 欄位應為固定欄位，不可滾動 </expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>TCG-100558: 風險管理員透過輸入條件篩選玩家關聯記錄</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-100558.010 關聯度篩選</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30182</id>
+				<title>TCG-100558.010.010 關聯玩家 - 關聯度篩選 - 全部</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯度** 選擇 **全部**
+
+2. 點擊 **查詢** 
+</steps>
+											<expected>1. 所有關聯玩家將被篩選並選出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30183</id>
+				<title>TCG-100558.010.020 關聯玩家 - 關聯度篩選 - &gt;100</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯度** 選擇 **&gt;100**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有關聯度分數大於 100 的玩家帳號將被篩選並選出
+2. 預設排序順序為關聯度分數（遞減）
+3. 若無關聯度分數大於 100 的玩家，則顯示 **暫無數據**</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30184</id>
+				<title>TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯度** 選擇 **&lt;=100**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有關聯度分數小於或等於 100 的玩家帳號將被篩選並選出
+2. 預設排序順序為關聯度分數（遞減）
+3. 若無關聯度分數小於或等於 100 的玩家，則顯示 **暫無數據**</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30185</id>
+				<title>TCG-100558.010.040 關聯玩家 - 關聯度篩選 - &gt;50</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯度** 選擇 **&gt;50**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有關聯度分數大於 50 的玩家帳號將被篩選並選出
+2. 預設排序順序為關聯度分數（遞減）
+3. 若無關聯度分數大於 50 的玩家，則顯示 **暫無數據**</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>TCG-100558.020 關聯信息篩選</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30186</id>
+				<title>TCG-100558.020.010 關聯玩家 - 關聯信息篩選 - 登入 IP</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **登入 IP相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 IP 的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30187</id>
+				<title>TCG-100558.020.020 關聯玩家 - 關聯信息篩選 - 登入密碼</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **登入密碼相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同密碼的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30188</id>
+				<title>TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **資金密碼相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同資金密碼的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30189</id>
+				<title>TCG-100558.020.040 關聯玩家 - 關聯信息篩選 - 裝置</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **裝置**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有使用相同裝置的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30190</id>
+				<title>TCG-100558.020.050 關聯玩家 - 關聯信息篩選 - 真實姓名</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **真實姓名相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同真實姓名的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30191</id>
+				<title>TCG-100558.020.060 關聯玩家 - 關聯信息篩選 - MAC Address</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **MAC 地址相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 MAC Address 的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30192</id>
+				<title>TCG-100558.020.070 關聯玩家 - 關聯信息篩選 - 手機號碼</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **手機號碼相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有手機號碼的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30193</id>
+				<title>TCG-100558.020.080 關聯玩家 - 關聯信息篩選 - 用戶名</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **用戶名相似**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相似用戶名的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30194</id>
+				<title>TCG-100558.020.090 關聯玩家 - 關聯信息篩選 - 使用的郵箱</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **郵箱相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 Email 的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30195</id>
+				<title>TCG-100558.020.100 關聯玩家 - 關聯信息篩選 - 使用的銀行卡</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **銀行卡相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同銀行卡（信用卡）的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30196</id>
+				<title>TCG-100558.020.110 關聯玩家 - 關聯信息篩選 - QQ ID</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **登
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 QQ 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30197</id>
+				<title>TCG-100558.020.120 關聯玩家 - 關聯信息篩選 - 微信 ID</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **WECHAT相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 WeChat 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30198</id>
+				<title>TCG-100558.020.130 關聯玩家 - 關聯信息篩選 - LINE ID</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **LINE相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 Line 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30199</id>
+				<title>TCG-100558.020.140 關聯玩家 - 關聯信息篩選 - Whatsapp</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **WhatsAPP相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 WhatsApp 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30200</id>
+				<title>TCG-100558.020.150 關聯玩家 - 關聯信息篩選 - Facebook</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **Facebook相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 Facebook 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30201</id>
+				<title>TCG-100558.020.160 關聯玩家 - 關聯信息篩選 - Telegram</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **Telegram相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 Telegram 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30202</id>
+				<title>TCG-100558.020.170 關聯玩家 - 關聯信息篩選 - Twitter（X.com）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **Twitter相同**
+
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 X.Com 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30203</id>
+				<title>TCG-100558.020.180 關聯玩家 - 關聯信息篩選 - 證件號碼</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986) </preconds>
+											<steps>1. 在 **關聯信息** 選擇 **身分證相同**
+2. 點擊 **查詢** 1. 在 **關聯信息** 選擇 **WECHAT相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 在 **關聯信息** 選擇 **WECHAT相同**
+2. 點擊 **查詢** </expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30204</id>
+				<title>TCG-100558.020.190 關聯玩家 - 關聯信息篩選 - 銀行分行</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986)</preconds>
+											<steps>1. 在 **關聯信息** 選擇 **WECHAT相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 WeChat 帳號的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30205</id>
+				<title>TCG-100558.020.200 關聯玩家 - 關聯信息篩選 - 銀行城市</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-93178.010.010 關聯玩家 - UI 調整 - 總欄位數及順序](https://tcgroup.testrail.io/index.php?/cases/view/29986)</preconds>
+											<steps>1. 在 **關聯信息** 選擇 **銀行城市相同**
+2. 點擊 **查詢** </steps>
+											<expected>1. 所有具有相同 銀行城市 的玩家將被篩選並列出
+2. 預設排序順序為關聯度分數（遞減）</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>TCG-100558.030 額外關聯項目篩選</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30207</id>
+				<title>TCG-100558.030.010 關聯玩家 - 額外關聯項目 - 使用關聯度搜尋且項目 &gt;= 0</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100](https://tcgroup.testrail.io/index.php?/cases/view/30184)</preconds>
+											<steps>1. 在關聯項目輸入 0
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表
+
+</steps>
+											<expected>1. 結果列表需列出與設定為關聯度為 **&lt;=100** 一樣數量的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30208</id>
+				<title>TCG-100558.030.020 關聯玩家 - 額外關聯項目 - 使用關聯度搜尋且項目 &gt;= 1</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100](https://tcgroup.testrail.io/index.php?/cases/view/30184)</preconds>
+											<steps>1. 在關聯項目輸入 1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表
+</steps>
+											<expected>1. 結果列表需列出與設定為關聯度為 **&lt;=100** 一樣數量的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30209</id>
+				<title>TCG-100558.030.030 關聯玩家 - 額外關聯項目 - 使用關聯度搜尋且項目 &gt;= 2</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100](https://tcgroup.testrail.io/index.php?/cases/view/30184)</preconds>
+											<steps>1. 在關聯項目輸入 2
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表
+</steps>
+											<expected>1. 結果列表需列出關聯項目為 **&lt;=100 且關聯兩項** 以上的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30211</id>
+				<title>TCG-100558.030.040 關聯玩家 - 額外關聯項目 - 使用關聯度搜尋且項目 &gt;= 13（可能有關聯性的上限）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>使用 jacktest003 玩家帳號完成 [TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100](https://tcgroup.testrail.io/index.php?/cases/view/30184)</preconds>
+											<steps>1. 在關聯項目輸入 13
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>應無任何結果顯示
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30213</id>
+				<title>TCG-100558.030.050 關聯玩家 - 額外關聯項目 - 使用關聯度搜尋且項目 &gt;= -1 （Error Handling）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.030 關聯玩家 - 關聯度篩選 - &lt;=100](https://tcgroup.testrail.io/index.php?/cases/view/30184)</preconds>
+											<steps>1. 在關聯項目輸入 -1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表需列出與設定為關聯度為 **&lt;=100** 一樣數量的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30212</id>
+				<title>TCG-100558.030.100 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（非疊加類型）且項目 &gt;= 0</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 0
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表
+</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30214</id>
+				<title>TCG-100558.030.110 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（非疊加類型）且項目 &gt;= 1</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30215</id>
+				<title>TCG-100558.030.120 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（非疊加類型）且項目 &gt;= 2</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 2
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表需列出關聯項目為 **支付密碼且關聯兩項** 以上的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30216</id>
+				<title>TCG-100558.030.130 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（非疊加類型）且項目 &gt;= 13（可能有關聯性的上限）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 13
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>應無任何結果顯示</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30217</id>
+				<title>TCG-100558.030.140 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（非疊加類型）且項目 &gt;= -1（Error Handling）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 -1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30218</id>
+				<title>TCG-100558.030.200 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（疊加類型）且項目 &gt;= 0</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.010 關聯玩家 - 關聯信息篩選 - 登入 IP](https://tcgroup.testrail.io/index.php?/cases/view/30186)
+</preconds>
+											<steps>1. 在關聯項目輸入 0
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30219</id>
+				<title>TCG-100558.030.210 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（疊加類型）且項目 &gt;= 1</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.010 關聯玩家 - 關聯信息篩選 - 登入 IP](https://tcgroup.testrail.io/index.php?/cases/view/30186)</preconds>
+											<steps>1. 在關聯項目輸入 1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30220</id>
+				<title>TCG-100558.030.220 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（疊加類型）且項目 &gt;= 2</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.010 關聯玩家 - 關聯信息篩選 - 登入 IP](https://tcgroup.testrail.io/index.php?/cases/view/30186)</preconds>
+											<steps>1. 在關聯項目輸入 2
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表需列出關聯項目為 **登入IP且關聯兩項** 以上的結果
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30221</id>
+				<title>TCG-100558.030.230 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（疊加類型）且項目 &gt;= 13（可能有關聯性的上限）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.010 關聯玩家 - 關聯信息篩選 - 登入 IP](https://tcgroup.testrail.io/index.php?/cases/view/30186)</preconds>
+											<steps>1. 在關聯項目輸入 13
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>應無任何結果顯示</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30222</id>
+				<title>TCG-100558.030.240 關聯玩家 - 額外關聯項目 - 使用關聯信息搜尋（疊加類型）且項目 &gt;= -1（Error Handling）</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.020.030 關聯玩家 - 關聯信息篩選 - 支付密碼](https://tcgroup.testrail.io/index.php?/cases/view/30188)</preconds>
+											<steps>1. 在關聯項目輸入 -1
+2. 點擊 **查詢** 按鈕
+3. 觀察結果列表</steps>
+											<expected>1. 結果列表數目不變
+2. 預設排列為關聯度（遞減）</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>TCG-100572: 風險管理員查看關聯資訊詳細內容</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-100572.010 查看關聯信息</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30082</id>
+				<title>TCG-100572.010.010 查看關聯信息 - 彈框顯示</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.010 關聯玩家 - 關聯度篩選 - 全部](https://tcgroup.testrail.io/index.php?/cases/view/30182)</preconds>
+											<steps>1. 點擊關聯度分數 
+</steps>
+											<expected>1. 關聯信息彈框應顯示
+2. 關聯信息彈框中分類的數量應與關聯項目欄位數量相同
+
+
+ 
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30083</id>
+				<title>TCG-100572.010.020 查看關聯信息 - 顯示類別和總分</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100572.010.010 查看關聯信息 - 彈框顯示](https://tcgroup.testrail.io/index.php?/cases/view/30082)</preconds>
+											<steps>1. 展開彈框內各項目
+2. 觀察分數加總以及項目列表</steps>
+											<expected>1. 各分類項目中，若包含累加項目的部分（如登入IP、裝置...），需確認顯示之分數加總是否符合
+2. 各分類項目總數需與關聯項目中的數字相同
+
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30084</id>
+				<title>TCG-100572.010.030 查看關聯信息 - 顯示分頁功能</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.010 關聯玩家 - 關聯度篩選 - 全部](https://tcgroup.testrail.io/index.php?/cases/view/30182)</preconds>
+											<steps>1. 觀察多個關聯項目列出狀況下的分頁
+</steps>
+											<expected>1. 使用者查看彈框系統應該支持多頁顯示，並允許使用者翻頁查看其他關聯信息
+2. 每一頁應顯示相同格式的關聯信息，並包含該頁所有類別的總分
+3. 使用者應該能夠點擊翻頁按鈕（例如：下一頁、上一頁）來查看不同頁面的數據</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>TCG-100579: 風險管理員匯出關聯玩家資料</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-100579.010 匯出資料</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30090</id>
+				<title>TCG-100579.010.010 匯出資料 - 匯出當前查詢結果</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100558.010.010 關聯玩家 - 關聯度篩選 - 全部](https://tcgroup.testrail.io/index.php?/cases/view/30182)</preconds>
+											<steps>1. 點擊匯出（導出）按鈕
+
+</steps>
+											<expected>1. 系統應將當前查詢結果匯出為檔案，檔案命名格式為
+   **关联玩家_YYMMDD__HHmmss.csv**
+2. 檔案格式應正確（如 CSV 或 Excel）
+</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30091</id>
+				<title>TCG-100579.010.020 匯出資料 - 匯出資料欄位順序和格式</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>完成 [TCG-100579.010.010 匯出按鈕功能：匯出當前查詢結果](https://tcgroup.testrail.io/index.php?/cases/view/30090) 
+</preconds>
+											<steps>1. 開啟匯出後的檔案
+
+</steps>
+											<expected>匯出的檔案應包含以下欄位：
+關聯帳號
+帳號狀態
+上級代理
+註冊日期（UI 表格的註冊日期）
+註冊 IP（UI 表格的註冊日期）
+上次登入時間（UI 表格的上次登入）
+上次登入IP（UI 表格的上次登入）
+餘額
+首存時間
+首存金額
+總獎金
+
+總充值（UI 表格的上的總充值（次）
+總充值次數（UI 表格的上的總充值（次）
+總提現（UI 表格上的總提現（次））
+總提現次數（UI 表格上的總提現（次））
+總投注（UI 表格上的總投注/總中獎）
+總中獎（UI 表格上的總投注/總中獎）
+總有效投注
+總盈虧
+營運標籤
+關聯項目
+關聯度
+
+備註：所有數值欄位應保持與表格顯示相同的格式（千分位分隔符、小數位數等）</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C30093</id>
+				<title>TCG-100579.010.030 匯出資料 - 沒有關聯玩家資料</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>1. 使用 zxcvbnm01 玩家完成 [TCG-100558.010.020 關聯玩家 - 關聯度篩選 - &gt;100](https://tcgroup.testrail.io/index.php?/cases/view/30183)</preconds>
+											<steps>1. 點擊匯出（導出）按鈕</steps>
+											<expected>1. 匯出按鈕依舊可以動作以及產生檔案
+2. 檔案內需包含欄位名稱</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>TCG-100491: 系統管理員統一玩家管理的多語系用詞</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>TCG-100491.010 用語一致性</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C30098</id>
+				<title>TCG-100491.010.010 驗證用詞一致性</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+											<preconds>https://docs.google.com/spreadsheets/d/145qImr6UwW-7XBfDkJkvMkoNl2GpnURaTxRon0ABx_Q/edit?gid=1191999851#gid=1191999851</preconds>
+											<steps>1. 於關聯玩家頁面比對上述統一翻譯用語
+
+
+</steps>
+											<expected>1.所有用詞應該使用一致的翻譯
+2.所有翻譯應符合產品組核准的用詞清單
+3.所有支援的語系都應保持一致性</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+</suite>

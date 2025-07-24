@@ -5,13 +5,13 @@
 ## 階段 1：專案基礎建設
 
 ### 1.1 專案結構初始化
-- [ ] 建立專案目錄結構
-- [ ] 設定 Git 版本控制和 .gitignore
-- [ ] 建立 requirements.txt 檔案
-- [ ] 建立設定檔範本 (config.yaml.example)
-- [ ] 設定日誌配置檔案 (logging.yaml)
-- [ ] 撰寫初始 README.md
-- [ ] 建立測試目錄和初始測試架構
+- [x] 建立專案目錄結構
+- [x] 設定 Git 版本控制和 .gitignore
+- [x] 建立 requirements.txt 檔案
+- [x] 建立設定檔範本 (config.yaml.example)
+- [x] 設定日誌配置檔案 (logging.yaml)
+- [x] 撰寫初始 README.md
+- [x] 建立測試目錄和初始測試架構
 
 **測試要求**：
 - 驗證專案結構完整性
@@ -21,11 +21,11 @@
 **交付標準**：專案結構建立完成，基礎設定檔可正常運作
 
 ### 1.2 測試環境設定
-- [ ] 建立測試資料夾結構 (tests/fixtures/)
-- [ ] 準備測試用 XML 檔案範例
-- [ ] 設定 pytest 測試環境
-- [ ] 建立測試用的模擬 Lark API 回應資料
-- [ ] 撰寫測試輔助工具函數
+- [x] 建立測試資料夾結構 (tests/fixtures/)
+- [x] 準備測試用 XML 檔案範例
+- [x] 設定 pytest 測試環境
+- [x] 建立測試用的模擬 Lark API 回應資料
+- [x] 撰寫測試輔助工具函數
 
 **測試要求**：
 - 測試框架可正常執行

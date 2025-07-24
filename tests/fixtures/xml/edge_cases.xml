@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+    <id>S888</id>
+    <name>邊界條件測試套件</name>
+    <description>測試各種邊界條件和特殊情況</description>
+    <sections>
+        <section>
+            <name>邊界條件測試</name>
+            <description>包含各種特殊格式的測試案例</description>
+            <cases>
+                <case>
+                    <id>C888001</id>
+                    <title>TCG888.001.001 缺少 Hyphen 的案例編號</title>
+                    <template>Test Case (Text)</template>
+                    <type>Functional</type>
+                    <priority>High</priority>
+                    <custom>
+                        <preconds>測試案例編號格式修正</preconds>
+                        <steps>1. 檢查案例編號
+2. 驗證格式是否正確</steps>
+                        <expected>案例編號被修正為 TCG-888.001.001</expected>
+                    </custom>
+                </case>
+                <case>
+                    <id>C888002</id>
+                    <title>TCG-888.002.001 包含 Markdown 格式的測試案例</title>
+                    <template>Test Case (Text)</template>
+                    <type>Functional</type>
+                    <priority>Medium</priority>
+                    <custom>
+                        <preconds>測試內容包含 **粗體** 和 [連結](http://example.com)</preconds>
+                        <steps>1. 檢查 *斜體* 內容
+2. 驗證 `程式碼` 格式
+3. 測試 [Google](https://www.google.com) 連結處理</steps>
+                        <expected>Markdown 格式被正確清理，連結只保留描述文字</expected>
+                    </custom>
+                </case>
+                <case>
+                    <id>C888003</id>
+                    <title>TCG-888.003.001 包含特殊字元的測試案例</title>
+                    <template>Test Case (Text)</template>
+                    <type>Functional</type>
+                    <priority>Low</priority>
+                    <custom>
+                        <preconds>測試特殊字元：&lt;&gt;&amp;"'</preconds>
+                        <steps>1. 輸入特殊字元 &lt;script&gt;
+2. 檢查 &amp; 符號處理
+3. 驗證引號 "單引號" 和 '雙引號' 處理</steps>
+                        <expected>特殊字元被正確轉義和處理</expected>
+                    </custom>
+                </case>
+            </cases>
+        </section>
+    </sections>
+</suite>

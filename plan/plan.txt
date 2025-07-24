@@ -10,6 +10,7 @@
 02. XXX、YYY 以及 ZZZ 是數字組合。TCG 與 XXX 中間的 Hyphen 有的狀況會漏寫，必須做處理
 03. 取出後的 TCG 與 XXX 中間的 Hyphen 在交給下一階段前一定要加上
 04. 必須清理 markdown 格式，如果是 URL 的話只留下說明文字
+05. 僅需要 Title, Priority, Precondition, Steps 以及 Expected Result
 
 -----
 Lark Client：
@@ -17,6 +18,13 @@ Lark Client：
 02. 僅需要能夠寫入資料到資料表即可，其他附加功能不需要，做最大程度精簡
 03. 注意 Rate Limit
 04. 單次更新的資料筆數最多為 500 筆
+
+-----
+Lark 欄位對應：
+01. Test Case Number 由 Title 中取出
+02. Title 為取出 Test Case NUmber 的後段部分
+03. 其他欄位直接對應
+04. 除了 Priority 為單選外，其他都為文字欄位
 
 -----
 流程：

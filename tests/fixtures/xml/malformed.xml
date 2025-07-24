@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+    <id>S999</id>
+    <name>格式錯誤測試套件</name>
+    <description>用於測試錯誤處理的格式錯誤檔案</description>
+    <sections>
+        <section>
+            <name>錯誤格式測試</name>
+            <cases>
+                <case>
+                    <id>C999</id>
+                    <title>TCG-999.999.999 格式錯誤測試案例</title>
+                    <template>Test Case (Text)</template>
+                    <type>Error</type>
+                    <priority>Low</priority>
+                    <custom>
+                        <preconds>此案例缺少必要的結束標籤</preconds>
+                        <steps>1. 執行測試
+2. 觀察錯誤處理</steps>
+                        <!-- 故意缺少 expected 標籤來測試錯誤處理 -->
+                    </custom>
+                </case>
+                <!-- 故意缺少結束標籤 -->
+            </cases>
+        </section>
+    </sections>
+<!-- 故意缺少 suite 結束標籤來測試解析錯誤 -->
