@@ -1,0 +1,15 @@
+# 核心依賴
+click>=8.0.0
+requests>=2.28.0
+PyYAML>=6.0
+colorama>=0.4.4
+
+# 開發與測試依賴
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+
+# 程式碼品質工具
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991

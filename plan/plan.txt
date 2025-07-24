@@ -1,0 +1,34 @@
+這個專案是要開發一隻 script，將 Testrail 的 XML 格式 test case 轉換到 Lark 多維表格中的資料表
+
+-----
+資料來源：
+01. Testrail 匯出的標準 XML 格式檔案
+
+-----
+取用欄位：
+01. Title 包含了 Test Case Number 以及 Title。Test Case Number 通常是 TCG-XXX.YYY.ZZZ 的格式
+02. XXX、YYY 以及 ZZZ 是數字組合。TCG 與 XXX 中間的 Hyphen 有的狀況會漏寫，必須做處理
+03. 取出後的 TCG 與 XXX 中間的 Hyphen 在交給下一階段前一定要加上
+04. 必須清理 markdown 格式，如果是 URL 的話只留下說明文字
+
+-----
+Lark Client：
+01. 參考既有專案的基礎來撰寫：/Users/hideman/code/jira_sync_v3/lark_client.py
+02. 僅需要能夠寫入資料到資料表即可，其他附加功能不需要，做最大程度精簡
+03. 注意 Rate Limit
+04. 單次更新的資料筆數最多為 500 筆
+
+-----
+流程：
+讀取 XML -> 取出欄位值並做必要清理 -> 轉換到 Lark 對應欄位能接受的格式 -> 批次寫入 Lark 資料表
+
+-----
+程式語言：
+01. 開發語言：Python
+02. CLI 介面
+03. 使用選單以及互動式問答輸入資料原以及目標資料表
+
+-----
+開發方向：
+01. 最小程度實作，不需要的花俏功能一率不做，必要的通知跟提示以外都可以捨棄
+02. 嚴守 principle.md 提到的注意事項

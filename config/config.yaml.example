@@ -1,0 +1,46 @@
+# Lark API 設定
+lark:
+  app_id: ${LARK_APP_ID}
+  app_secret: ${LARK_APP_SECRET}
+  rate_limit:
+    max_requests_per_minute: 60
+    batch_size: 500
+  api:
+    timeout: 30
+    retry_count: 3
+
+# 資料處理設定
+processing:
+  test_case_number_pattern: "TCG-\\d+\\.\\d+\\.\\d+"
+  required_fields:
+    - title
+    - case_number
+  batch_processing:
+    max_records_per_batch: 500
+    memory_limit_mb: 200
+
+# 檔案處理設定
+files:
+  max_file_size_mb: 100
+  temp_directory: "temp"
+  output_directory: "test_output"
+  supported_encodings:
+    - "utf-8"
+    - "utf-8-sig"
+    - "cp1252"
+
+# 日誌設定
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/converter.log"
+  max_file_size_mb: 10
+  backup_count: 5
+  console_output: true
+
+# CLI 介面設定
+cli:
+  language: "zh-TW"
+  progress_bar: true
+  color_output: true
+  confirmation_required: true
