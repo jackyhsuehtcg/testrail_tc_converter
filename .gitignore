@@ -73,14 +73,17 @@ Thumbs.db
 # 專案特定
 config/config.yaml
 logs/
+data/
 temp/
 test_output/
 *.log
 
 # 敏感資訊
+.env
 .env.local
 secrets.yaml
 tokens.txt
+config/**/private.yaml
 
 # 測試暫存檔案
 tests/temp/

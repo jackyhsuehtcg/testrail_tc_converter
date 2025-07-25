@@ -1,63 +1,151 @@
-# Lark API 設定
-lark:
-  app_id: ${LARK_APP_ID}
-  app_secret: ${LARK_APP_SECRET}
-  rate_limit:
-    max_requests_per_minute: 60
-    batch_size: 500
-  api:
-    timeout: 30
-    retry_count: 3
-  field_mapping:
-    # Lark 多維表格欄位對應
-    test_case_number: "test_case_number"  # 文字欄位
-    title: "title"  # 文字欄位
-    priority: "priority"  # 單選欄位
-    precondition: "precondition"  # 文字欄位
-    steps: "steps"  # 文字欄位
-    expected_result: "expected_result"  # 文字欄位
+# TestRail 轉換器配置範例
+# 複製此檔案為 config.yaml 並填入您的實際配置值
 
-# 資料處理設定
+# 全域配置
+global:
+  data_directory: data
+  log_file: logs/testrail_converter.log
+  log_level: INFO                         # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  max_file_size_mb: 100
+  temp_directory: temp
+
+# Lark 配置 - 必須填入實際值
+lark:
+  app_id: "cli_xxxxxxxxxxxxxxxxx"         # 請替換為您的 Lark App ID
+  app_secret: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # 請替換為您的 Lark App Secret
+  base_url: https://open.larksuite.com/open-apis
+  
+  # API 呼叫限制
+  rate_limit:
+    max_requests: 100
+    window_seconds: 60
+    retry_delay: 1.0
+  
+  # 欄位映射配置（可依需要調整中文欄位名稱）
+  field_mapping:
+    test_case_number: "測試案例編號"
+    title: "標題"
+    priority: "優先級"
+    precondition: "前置條件"
+    steps: "測試步驟"
+    expected_result: "預期結果"
+    
+  # 預設表格配置（可透過命令列覆蓋）
+  default_table:
+    wiki_token: ""                        # 格式：docABC123456789
+    table_id: ""                         # 格式：tblXYZ987654321
+
+# 資料處理配置
 processing:
-  test_case_number_pattern: "TCG-\\d+\\.\\d+\\.\\d+"
+  # 測試案例編號格式（依您的專案調整）
+  test_case_number_pattern: "^TCG-\\d{3}\\.\\d{3}\\.\\d{3}$"
+  
   required_fields:
+    - test_case_number
     - title
-    - priority
-    - precondition
     - steps
     - expected_result
+  
   batch_processing:
-    max_records_per_batch: 500
-    memory_limit_mb: 200
-  field_mapping:
-    # XML 到內部格式的欄位對應
-    xml_priority: "priority"
-    xml_preconds: "precondition"
-    xml_steps: "steps"
-    xml_expected: "expected_result"
+    batch_size: 500                       # 建議值：100-500
+    max_retries: 3
+    retry_delay: 1.0
+    timeout_seconds: 30
+  
+  data_cleaning:
+    fix_missing_hyphens: true             # 自動修正 TCG001.002.003 → TCG-001.002.003
+    clean_markdown: true                  # 清理 **粗體** → 粗體
+    extract_url_descriptions: true       # 提取 [說明](URL) → 說明
+    normalize_priority: true              # 標準化 high → High
 
-# 檔案處理設定
-files:
-  max_file_size_mb: 100
-  temp_directory: "temp"
-  output_directory: "test_output"
-  supported_encodings:
-    - "utf-8"
-    - "utf-8-sig"
-    - "cp1252"
+# XML 解析配置
+xml_parser:
+  supported_formats:
+    - TestRail
+  
+  options:
+    validate_structure: true
+    extract_nested_cases: true
+    handle_special_chars: true
+  
+  error_handling:
+    skip_invalid_cases: true
+    continue_on_error: true
+    log_skipped_cases: true
 
-# 日誌設定
+# 日誌配置
 logging:
-  level: INFO
+  level: INFO                             # 生產環境建議 INFO，開發時可用 DEBUG
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  file_path: "logs/converter.log"
-  max_file_size_mb: 10
+  file: "logs/conversion.log"
+  max_file_size: 10485760                 # 10MB
   backup_count: 5
-  console_output: true
+  
+  # 各模組日誌級別（可個別調整）
+  loggers:
+    main: INFO
+    parsers.xml_parser: INFO
+    parsers.data_cleaner: INFO
+    parsers.formatter: INFO
+    lark.client: INFO
+    cli.interface: INFO
+    config.config_manager: INFO
+    utils: INFO
 
-# CLI 介面設定
+# CLI 介面配置
 cli:
-  language: "zh-TW"
-  progress_bar: true
-  color_output: true
-  confirmation_required: true
+  display:
+    show_progress: true
+    show_statistics: true
+    use_colors: true
+  
+  interaction:
+    max_retry_attempts: 3
+    input_timeout: 30
+    confirm_before_upload: true
+
+# 驗證規則配置
+validation:
+  file:
+    allowed_extensions: [".xml"]
+    max_size_mb: 100
+    encoding: "utf-8"
+  
+  lark_tokens:
+    wiki_token_pattern: "^[A-Za-z0-9]{20,30}$"
+    table_id_pattern: "^tbl[A-Za-z0-9]{10,20}$"
+  
+  test_case:
+    min_title_length: 5
+    max_title_length: 200
+    min_steps_length: 10
+    required_priority_values:
+      - High
+      - Medium
+      - Low
+      - Critical
+
+# 錯誤處理配置
+error_handling:
+  retry:
+    max_attempts: 3
+    backoff_factor: 2
+    initial_delay: 1.0
+  
+  recovery:
+    skip_on_parse_error: true
+    continue_on_api_error: false
+    save_partial_results: true
+
+# 開發和調試配置
+development:
+  debug_mode: false                       # 生產環境設為 false
+  mock_api_calls: false                   # 測試時可設為 true
+  verbose_logging: false
+  save_intermediate_data: false
+
+# 使用說明：
+# 1. 將此檔案複製為 config.yaml
+# 2. 填入您的 Lark App ID 和 App Secret
+# 3. 依需要調整欄位映射和其他配置
+# 4. 執行轉換器：python main.py --config config.yaml
